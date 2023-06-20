@@ -1,4 +1,5 @@
-package telrun.util.tests;
+package telran.util.tests;
+
 import java.util.Comparator;
 
 public class DigitsSumComparator implements Comparator<Integer> {
