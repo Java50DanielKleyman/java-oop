@@ -19,7 +19,7 @@ class ExceptionTest {
 			System.out.println(e.getMessage());
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			
+			//
 		}
 		assertEquals(4000, result);
 	}
