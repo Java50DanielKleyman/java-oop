@@ -12,13 +12,13 @@ import telran.exceptions.BallBrokenFloor;
 class ExceptionTest {
 	@Test
 	void ballBrokenTest() {
-		BallBrokenFloor bbf = new BallBrokenFloor(100);
+		BallBrokenFloor bbf = new BallBrokenFloor(200);
 		assertEquals(bbf.getfloor(), getMiniFloor(bbf));
 
 	}
 
 	private int getMiniFloor(BallBrokenFloor bbf) {
-		int[] ArrayFloors = getArray(10);
+		int[] ArrayFloors = getArray(200);
 		int left = 0;
 		int right = ArrayFloors.length - 1;
 		while (left <= right) {
