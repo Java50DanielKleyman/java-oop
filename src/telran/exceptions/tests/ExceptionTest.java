@@ -22,7 +22,7 @@ class ExceptionTest {
 		int left = 0;
 		int right = ArrayFloors.length - 1;
 		while (left <= right) {
-			int mid = left + (right - left) / 2;
+			int mid = (left + right) / 2;
 			try {
 				bbf.broken(mid);
 				left = mid + 1;
