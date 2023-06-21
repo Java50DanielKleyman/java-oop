@@ -24,13 +24,13 @@ class ExceptionTest {
 		while (left <= right) {
 			int mid = (left + right) / 2;
 			try {
-				bbf.broken(mid);
+				bbf.broken(mid+1);
 				left = mid + 1;
 
 			} catch (Exception e) {
 				try {
-					bbf.broken(mid - 1);
-					return mid;
+					bbf.broken(mid);
+					return mid + 1;
 				} catch (Exception d) {
 					right = mid - 1;
 				}
