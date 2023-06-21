@@ -18,16 +18,16 @@ class ExceptionTest {
 	}
 
 	private int getMiniFloor(BallBrokenFloor bbf) {
-		int[] ArrayFloors = getArray(200);
+		int[] ArrayFloors = new int[200];
 		int left = 0;
 		int right = ArrayFloors.length - 1;
 		while (left <= right) {
 			int mid = left + (right - left) / 2;
-			if (ArrayFloors[mid] == bbf.getfloor()) {
-				return ArrayFloors[mid];
+			if (mid + 1 == bbf.getfloor()) {
+				return mid + 1;
 			}
 			try {
-				bbf.broken(ArrayFloors[mid]);
+				bbf.broken(mid + 1);
 				left = mid + 1;
 
 			} catch (Exception e) {
@@ -35,15 +35,6 @@ class ExceptionTest {
 			}
 		}
 		return -1;
-	}
-
-	private int[] getArray(int nFloors) {
-		int[] ArrayFloors = new int[nFloors];
-		for (int i = 0; i < ArrayFloors.length; i++) {
-			ArrayFloors[i] = i + 1;
-		}
-		;
-		return ArrayFloors;
 	}
 
 //	@Test
