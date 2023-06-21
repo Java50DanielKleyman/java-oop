@@ -23,15 +23,17 @@ class ExceptionTest {
 		int right = ArrayFloors.length - 1;
 		while (left <= right) {
 			int mid = left + (right - left) / 2;
-			if (mid + 1 == bbf.getfloor()) {
-				return mid + 1;
-			}
 			try {
 				bbf.broken(mid + 1);
 				left = mid + 1;
 
 			} catch (Exception e) {
-				right = mid - 1;
+				try {
+					bbf.broken(mid);
+					return mid;
+				} catch (Exception d) {
+					right = mid - 1;
+				}
 			}
 		}
 		return -1;
