@@ -9,7 +9,7 @@ public class BallBrokenFloor {
 	}
 
 	public void broken(int floor) throws Exception {
-		if (floor > this.floor) {
+		if (floor >= this.floor) {
 			throw new Exception();
 		}
 	}
