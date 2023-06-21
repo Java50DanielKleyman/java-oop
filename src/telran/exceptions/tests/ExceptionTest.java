@@ -17,20 +17,18 @@ class ExceptionTest {
 
 	}
 
-	private int getMiniFloor(BallBrokenFloor bbf) {
-		int[] ArrayFloors = new int[200];
-		int left = 0;
-		int right = ArrayFloors.length - 1;
+	private int getMiniFloor(BallBrokenFloor bbf) {		
+		int left = 1;
+		int right = 200;
 		while (left <= right) {
 			int mid = (left + right) / 2;
 			try {
-				bbf.broken(mid+1);
+				bbf.broken(mid);
 				left = mid + 1;
-
 			} catch (Exception e) {
 				try {
-					bbf.broken(mid);
-					return mid + 1;
+					bbf.broken(mid-1);
+					return mid;
 				} catch (Exception d) {
 					right = mid - 1;
 				}
