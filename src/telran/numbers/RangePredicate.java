@@ -47,7 +47,7 @@ public class RangePredicate implements Iterable<Integer> {
 		Predicate<Integer> innerPredicate;
 
 		RangePredicateIterator(Predicate<Integer> predicate) {
-			if(predicate == null) {
+			if (predicate == null) {
 				throw new NullPointerException();
 			} else {
 				innerPredicate = predicate;

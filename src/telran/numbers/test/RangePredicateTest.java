@@ -40,13 +40,13 @@ class RangePredicateTest {
 		while (itEven.hasNext()) {
 			assertTrue(itEven.next() % 2 == 0);
 		}
-		assertThrows(NoSuchElementException.class, () -> itOdd.next());
-		assertThrows(NoSuchElementException.class, () -> itEven.next());
+		assertThrowsExactly(NoSuchElementException.class, () -> itOdd.next());
+		assertThrowsExactly(NoSuchElementException.class, () -> itEven.next());
 
 	}
 	@Test
 	void predicatNullTest() {
-		assertThrows(NullPointerException.class, () -> range.iterator());
+		assertThrowsExactly(NullPointerException.class, () -> range.iterator());
 	}
 	
 	@Test
