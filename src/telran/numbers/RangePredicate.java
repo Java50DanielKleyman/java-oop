@@ -52,23 +52,26 @@ public class RangePredicate implements Iterable<Integer> {
 			} else {
 				innerPredicate = predicate;
 			}
-			current = getCurrent();
+			current = minInclusive;
 		}
 
-		int getCurrent() {
-			int num = minInclusive;
-			while (!innerPredicate.test(num)) {
-				num++;
-				if (num >= maxExclusive) {
-					return maxExclusive;
-				}
-			}
-			return num;
-		}
+//		int getCurrent() {
+//			int num = minInclusive;
+//			while (!innerPredicate.test(num)) {
+//				num++;
+//				if (num >= maxExclusive) {
+//					return maxExclusive;
+//				}
+//			}
+//			return num;
+//		}
 
 		@Override
 		public boolean hasNext() {
-			return innerPredicate.test(current) && current < maxExclusive;
+			while (current < maxExclusive && !innerPredicate.test(current)) {
+				current++;
+			}
+			return current < maxExclusive;
 		}
 
 		@Override
