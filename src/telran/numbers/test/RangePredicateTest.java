@@ -24,14 +24,14 @@ class RangePredicateTest {
 
 	@Test
 	void fullRangeTest() {
-		int[] expected = { 1, 2, 3, 4 };
+		int[] expected = { 1, 2, 3, 4 };		
 		assertArrayEquals(expected, range.toArray());
 	}
 
 	@Test
 	void iteratorTest() {
 		range.setPredicate(predicateOdd);
-		Iterator<Integer> itOdd = range.iterator();
+		Iterator<Integer> itOdd = range.iterator();		
 		range.setPredicate(predicateEven);
 		Iterator<Integer> itEven = range.iterator();
 		while (itOdd.hasNext()) {
@@ -44,7 +44,11 @@ class RangePredicateTest {
 		assertThrows(NoSuchElementException.class, () -> itEven.next());
 
 	}
-
+	@Test
+	void predicatNullTest() {
+		assertThrows(NullPointerException.class, () -> range.iterator());
+	}
+	
 	@Test
 	void oddToArrayTest() {
 		int[] expected = { 1, 3 };
