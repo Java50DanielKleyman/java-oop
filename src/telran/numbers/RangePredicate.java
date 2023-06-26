@@ -47,11 +47,12 @@ public class RangePredicate implements Iterable<Integer> {
 		Predicate<Integer> innerPredicate;
 
 		RangePredicateIterator(Predicate<Integer> predicate) {
-			if (predicate == null) {
-				throw new NullPointerException();
-			} else {
-				innerPredicate = predicate;
-			}
+//			if (predicate == null) {
+//				throw new NullPointerException();
+//			} else {
+//				innerPredicate = predicate;
+//			}
+			innerPredicate = predicate;
 			current = minInclusive;
 		}
 
@@ -68,8 +69,10 @@ public class RangePredicate implements Iterable<Integer> {
 
 		@Override
 		public boolean hasNext() {
-			while (current < maxExclusive && !innerPredicate.test(current)) {
-				current++;
+			if (predicate != null) {
+				while (current < maxExclusive && !innerPredicate.test(current)) {
+					current++;
+				}
 			}
 			return current < maxExclusive;
 		}

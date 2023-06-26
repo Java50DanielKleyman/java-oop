@@ -50,10 +50,10 @@ class RangePredicateTest {
 
 	}
 
-	@Test
-	void predicatNullTest() {
-		assertThrowsExactly(NullPointerException.class, () -> range.iterator());
-	}
+//	@Test
+//	void predicatNullTest() {
+//		assertThrowsExactly(NullPointerException.class, () -> range.iterator());
+//	}
 
 	@Test
 	void oddToArrayTest() {
