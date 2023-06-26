@@ -34,11 +34,10 @@ class RangePredicateTest {
 		Iterator<Integer> itOdd = range.iterator();
 		range.setPredicate(predicateEven);
 		Iterator<Integer> itEven = range.iterator();
-//		while (itEven.hasNext()) {
-//		    Integer element = itEven.next();
-//		    // Process the element
-//		    System.out.println(element);
-//		}
+		while (itEven.hasNext()) {
+		    Integer element = itEven.next();		    
+		    System.out.println(element);
+		}
 		while (itOdd.hasNext()) {
 			assertTrue(itOdd.next() % 2 != 0);
 		}

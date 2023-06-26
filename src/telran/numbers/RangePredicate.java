@@ -30,7 +30,7 @@ public class RangePredicate implements Iterable<Integer> {
 	public int[] toArray() {
 		int[] res = new int[length()];
 		int index = 0;
-		for (int num = minInclusive; num < maxExclusive; num++) {
+		for (int num: this) {
 			if (predicate == null || predicate.test(num)) {
 				res[index++] = num;
 			}
