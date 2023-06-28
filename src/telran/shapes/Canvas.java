@@ -1,19 +1,17 @@
 package telran.shapes;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.function.Predicate;
 
+
+
 public class Canvas implements Shape, Iterable<Shape> {
 	private Shape[] shapes = new Shape[0];
 	private Shape[] removedShapes = new Shape[0];
-	Predicate<Shape> predicate = shape -> true;
-
-	public void setPredicate(Predicate<Shape> predicate) {
-		this.predicate = predicate;
-	}
-
+	
 	private class CanvasIterator implements Iterator<Shape> {
 		int current = containsInRemoved(shapes[0]) ? getCurrent(0) : 0;
 		boolean flNext = false;
@@ -55,7 +53,7 @@ public class Canvas implements Shape, Iterable<Shape> {
 
 	private int getCurrent(int current) {
 		current++;
-		while (current < shapes.length && !predicate.test(shapes[current])) {
+		while (current < shapes.length && containsInRemoved(shapes[current])) {
 			current++;
 		}
 		return current;
@@ -118,5 +116,10 @@ public class Canvas implements Shape, Iterable<Shape> {
 	public boolean removeNestedCanvases() {
 		return removeIf(shape -> shape instanceof Canvas);
 	}
-
+	public Shape [] getShapes() {
+		return shapes;
+	}
+	public Shape [] getRemovedShapes() {
+		return removedShapes;
+	}
 }
