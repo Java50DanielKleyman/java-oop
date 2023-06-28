@@ -40,7 +40,14 @@ class ShapesTest {
     void removiIfTest() {
         newCanvas.removeNestedCanvases();
         Shape[] expected = {canvas};
-        assertArrayEquals(expected, newCanvas.getRemovedShapes());
+        assertArrayEquals(expected, newCanvas.getRemovedShapes());    
+        int expectedElementsLeft = 0;
+        Iterator<Shape> it = newCanvas.iterator();
+    	while(it.hasNext()) {
+    		it.next();
+    		expectedElementsLeft++;
+    	}
+    	assertEquals(2, expectedElementsLeft);
     }
     @Test
 	void iteratorTest() {
@@ -50,8 +57,7 @@ class ShapesTest {
     		assertEquals(newCanvas.getShapes()[index], it.next());
     		index++;
     	}
-    	assertThrowsExactly(NoSuchElementException.class, () -> it.next());
-    	assertFalse(it.hasNext());
+    	assertThrowsExactly(NoSuchElementException.class, () -> it.next());    	
     }
     @Test
     void removeTest() {
@@ -62,5 +68,6 @@ class ShapesTest {
     	}
     	 Shape[] expected = {rectangle, square, canvas};
          assertArrayEquals(expected, newCanvas.getRemovedShapes());
+         assertThrowsExactly(IllegalStateException.class, () -> it.remove());    	
     }
 }
