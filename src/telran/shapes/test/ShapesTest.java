@@ -1,6 +1,5 @@
 package telran.shapes.test;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Iterator;
@@ -29,6 +28,8 @@ class ShapesTest {
         newCanvas.addShape(rectangle);
         newCanvas.addShape(square);
         newCanvas.addShape(canvas);
+        canvas.addShape(rectangle);
+        canvas.addShape(square);        
     }
 
     @Test
@@ -70,5 +71,15 @@ class ShapesTest {
     	 Shape[] expected = {rectangle, square, canvas};
          assertArrayEquals(expected, newCanvas.getRemovedShapes());
          assertThrowsExactly(IllegalStateException.class, () -> it.remove());    	
+    }
+    @Test
+    void perimeterTest() {
+    	assertEquals(36, newCanvas.perimeter());
+    	assertEquals(18, canvas.perimeter());
+    }
+    @Test
+    void squareTest() {
+    	assertEquals(20, newCanvas.square());
+    	assertEquals(10, canvas.square());
     }
 }
