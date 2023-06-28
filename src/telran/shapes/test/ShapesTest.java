@@ -52,9 +52,10 @@ class ShapesTest {
     @Test
 	void iteratorTest() {
     	int index = 0;
+    	 Shape[] expected = {rectangle, square, canvas};
     	Iterator<Shape> it = newCanvas.iterator();
     	while(it.hasNext()) {
-    		assertEquals(newCanvas.getShapes()[index], it.next());
+    		assertEquals(expected[index], it.next());
     		index++;
     	}
     	assertThrowsExactly(NoSuchElementException.class, () -> it.next());    	
